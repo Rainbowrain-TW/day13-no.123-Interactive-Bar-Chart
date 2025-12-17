@@ -6,6 +6,11 @@
 <body>
   <main class="page">
     <div id="intro"></div>
+    <div class="controls">
+      <label for="label-font-size">左側標籤字體大小：</label>
+      <input type="range" id="label-font-size" name="label-font-size" min="10" max="24" value="14" />
+      <span id="label-font-size-value">14px</span>
+    </div>
     <div id="chart"></div>
     <p class="unit-note">數值單位：M = 百萬，G = 十億</p>
   </main>
@@ -14,12 +19,26 @@
   
   import define from "./index.js";
   import {Runtime, Library, Inspector} from "./runtime.js";
-  
+
   const runtime = new Runtime();
   const main = runtime.module(define, name => {
     if (name === "intro") return Inspector.into(document.querySelector("#intro"))();
     if (name === "chart") return Inspector.into(document.querySelector("#chart"))();
     return null;
   });
-  
+
+  const labelFontSizeInput = document.getElementById("label-font-size");
+  const labelFontSizeValue = document.getElementById("label-font-size-value");
+  const updateLabelFontSize = (value) => {
+    const size = `${value}px`;
+    document.documentElement.style.setProperty("--bar-label-size", size);
+    labelFontSizeValue.textContent = size;
+  };
+
+  labelFontSizeInput.addEventListener("input", (event) => {
+    updateLabelFontSize(event.target.value);
+  });
+
+  updateLabelFontSize(labelFontSizeInput.value);
+
   </script>

@@ -43,7 +43,8 @@ function bar(svg, down, d, selector) {
       .attr("class", "enter")
       .attr("transform", `translate(0,${marginTop + barStep * barPadding})`)
       .attr("text-anchor", "end")
-      .style("font", "10px sans-serif");
+      .style("font-family", "\"Noto Sans TC\", \"Helvetica Neue\", Arial, sans-serif")
+      .style("font-size", "var(--bar-label-size)");
 
   const bar = g.selectAll("g")
     .data(d.children)
@@ -52,6 +53,7 @@ function bar(svg, down, d, selector) {
       .on("click", (event, d) => down(svg, d));
 
   bar.append("text")
+      .attr("class", "bar-label")
       .attr("x", marginLeft - 6)
       .attr("y", barStep * (1 - barPadding) / 2)
       .attr("dy", ".35em")
