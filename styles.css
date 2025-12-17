@@ -7,6 +7,7 @@
   --accent: #67b7ff;
   --accent-muted: #7d8590;
   --grid-color: #1f2937;
+  --bar-label-size: 16px;
 }
 
 body {
@@ -19,7 +20,7 @@ body {
 }
 
 .page {
-  max-width: 960px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
@@ -30,6 +31,14 @@ h1 {
 p {
   margin-top: 0;
   color: var(--text-secondary);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0 16px;
+  color: var(--text-primary);
 }
 
 a {
@@ -50,6 +59,11 @@ a:hover {
 .hierarchical-chart text {
   fill: var(--text-primary);
   font-size: 12px;
+}
+
+.hierarchical-chart .bar-label {
+  font-size: var(--bar-label-size);
+  font-family: "Noto Sans TC", "Helvetica Neue", Arial, sans-serif;
 }
 
 .hierarchical-chart .x-axis text,
